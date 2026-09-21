@@ -1,0 +1,288 @@
+@import '../../theme.css';
+
+.create-food-page {
+  min-height: 100svh;
+  background: var(--color-page);
+  color: var(--color-ink);
+}
+
+.create-food-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: min(100% - 32px, 760px);
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.create-food-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--color-ink);
+  font-size: 17px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.create-food-mark {
+  display: grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--color-mark);
+  color: var(--color-page);
+  font-family: var(--font-display);
+  font-size: 20px;
+  line-height: 1;
+}
+
+.create-food-back {
+  color: var(--color-muted);
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  text-underline-offset: 4px;
+}
+
+.create-food-content {
+  width: min(100% - 32px, 560px);
+  margin: 0 auto;
+  padding: 38px 0 56px;
+}
+
+.create-food-eyebrow {
+  display: block;
+  margin-bottom: 14px;
+  color: var(--color-accent-strong);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+}
+
+.create-food-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(38px, 11vw, 58px);
+  font-weight: 400;
+  letter-spacing: -2px;
+  line-height: 0.98;
+}
+
+.create-food-description {
+  max-width: 420px;
+  margin: 18px 0 32px;
+  color: var(--color-muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.create-food-form {
+  display: grid;
+  gap: 22px;
+  padding-top: 25px;
+  border-top: 1px solid var(--color-line);
+}
+
+.create-food-field {
+  display: grid;
+  gap: 8px;
+}
+
+.create-food-field label,
+.create-food-upload-label {
+  color: var(--color-muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.create-food-input,
+.create-food-textarea {
+  width: 100%;
+  border: 1px solid var(--color-line);
+  border-radius: 2px;
+  outline: none;
+  background: var(--color-panel);
+  color: var(--color-ink);
+  font-size: 14px;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.create-food-input {
+  min-height: 48px;
+  padding: 12px 14px;
+}
+
+.create-food-textarea {
+  min-height: 132px;
+  resize: vertical;
+  padding: 14px;
+  line-height: 1.5;
+}
+
+.create-food-input::placeholder,
+.create-food-textarea::placeholder {
+  color: var(--color-muted);
+  opacity: 0.72;
+}
+
+.create-food-input:focus,
+.create-food-textarea:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgb(227 94 61 / 15%);
+}
+
+.create-food-upload {
+  position: relative;
+  display: grid;
+  gap: 8px;
+}
+
+.create-food-file {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.create-food-upload-box {
+  display: grid;
+  min-height: 180px;
+  place-items: center;
+  padding: 24px;
+  border: 1px dashed var(--color-line);
+  border-radius: 2px;
+  background: color-mix(in srgb, var(--color-accent) 5%, var(--color-panel));
+  color: var(--color-muted);
+  cursor: pointer;
+  text-align: center;
+  transition: border-color 160ms ease, background 160ms ease;
+}
+
+.create-food-upload-box:hover,
+.create-food-file:focus-visible + .create-food-upload-box {
+  border-color: var(--color-accent);
+  background: color-mix(in srgb, var(--color-accent) 10%, var(--color-panel));
+}
+
+.create-food-preview-box {
+  overflow: hidden;
+  border: 1px solid var(--color-line);
+  border-radius: 2px;
+  background: var(--color-panel);
+}
+
+.create-food-preview {
+  display: block;
+  width: 100%;
+  max-height: 300px;
+  background: #111;
+  object-fit: contain;
+}
+
+.create-food-change-video {
+  display: block;
+  padding: 12px 14px;
+  border-top: 1px solid var(--color-line);
+  color: var(--color-accent-strong);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.create-food-change-video:hover {
+  background: color-mix(in srgb, var(--color-accent) 8%, var(--color-panel));
+}
+
+.create-food-upload-icon {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  margin: 0 auto 12px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: #fff;
+  font-size: 22px;
+  font-weight: 300;
+}
+
+.create-food-upload-title,
+.create-food-upload-note {
+  display: block;
+}
+
+.create-food-upload-title {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  color: var(--color-ink);
+  font-size: 14px;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.create-food-upload-note {
+  margin-top: 6px;
+  font-size: 11px;
+}
+
+.create-food-submit {
+  display: flex;
+  width: 100%;
+  min-height: 50px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px 12px 20px;
+  border: 0;
+  border-radius: 2px;
+  background: var(--color-ink);
+  color: var(--color-page);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  transition: background 160ms ease, transform 160ms ease;
+}
+
+.create-food-submit span {
+  color: var(--color-accent);
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.create-food-submit:hover {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+.create-food-submit:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.create-food-submit:active {
+  transform: translateY(1px);
+}
+
+.create-food-error {
+  margin: 0;
+  color: var(--color-accent-strong);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+@media (min-width: 640px) {
+  .create-food-header {
+    padding-top: 28px;
+  }
+
+  .create-food-content {
+    padding-top: 72px;
+  }
+}

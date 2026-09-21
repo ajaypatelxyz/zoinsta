@@ -1,0 +1,28 @@
+:root {
+  color-scheme: light dark;
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  --font-display: Georgia, "Times New Roman", serif;
+  --color-page: #f4f1eb;
+  --color-panel: #fbfaf7;
+  --color-ink: #20231f;
+  --color-muted: #74766f;
+  --color-line: #d9d8d0;
+  --color-accent: #e35e3d;
+  --color-accent-strong: #bc442b;
+  --color-mark: #20231f;
+  --shadow-card: 0 20px 60px rgb(31 35 31 / 8%);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-page: #171916;
+    --color-panel: #20231f;
+    --color-ink: #f5f2eb;
+    --color-muted: #a6a89f;
+    --color-line: #3b3e38;
+    --color-accent: #ef7955;
+    --color-accent-strong: #ff9572;
+    --color-mark: #f5f2eb;
+    --shadow-card: 0 20px 60px rgb(0 0 0 / 25%);
+  }
+}
