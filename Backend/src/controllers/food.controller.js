@@ -24,7 +24,23 @@ const createFood = async(req, res) => {
 
 const getFoodItems = async(req, res) => {
 
-    const food = await foodModel.find();
+    const foodItems = await foodModel.find();
+    const food = await Promise.all(foodItems.map(async(item) => {
+        const isLiked = await likeModel.exists({
+            user: req.user._id,
+            food: item._id
+        })
+        const isSaved = await saveModel.exists({
+            user: req.user._id,
+            food: item._id
+        })
+
+        return {
+            ...item.toObject(),
+            isLiked: Boolean(isLiked),
+            isSaved: Boolean(isSaved)
+        }
+    }))
 
     res.status(200).json({
         message: "All food fetch successfully",
@@ -117,8 +133,25 @@ const saveFood = async(req, res) => {
 
 }
 
+const getSaveFood = async(req, res) => {
+
+    const user = req.user;
+
+    const savedFood = await saveModel.find({
+        user: user._id
+    }).populate('food')
+
+    res.status(200).json({
+        message: "Saved food retrived successfully",
+        savedFood
+    })
+
+}
+
 module.exports = {
     createFood,
     getFoodItems,
-    likeFood
+    likeFood,
+    saveFood,
+    getSaveFood
 }

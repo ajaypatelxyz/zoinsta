@@ -98,7 +98,40 @@
 
 .feed-content {
   width: min(100%, 720px);
-  padding: 0 clamp(20px, 6vw, 90px) clamp(34px, 7vh, 76px);
+  padding: 0 clamp(20px, 6vw, 90px) clamp(105px, 13vh, 130px);
+}
+
+.feed-actions {
+  position: absolute;
+  right: clamp(16px, 4vw, 56px);
+  bottom: clamp(110px, 15vh, 150px);
+  display: grid;
+  gap: 18px;
+}
+
+.feed-action {
+  display: grid;
+  justify-items: center;
+  gap: 3px;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  filter: drop-shadow(0 2px 8px rgb(0 0 0 / 35%));
+}
+
+.feed-action svg {
+  width: 25px;
+  height: 25px;
+}
+
+.feed-action span {
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.feed-action.is-active {
+  color: #ffad91;
 }
 
 .feed-store-type {
@@ -166,7 +199,12 @@
 
   .feed-content {
     padding-right: 34px;
-    padding-bottom: 34px;
+    padding-bottom: 105px;
+  }
+
+  .feed-actions {
+    right: 13px;
+    bottom: 112px;
   }
 
   .feed-description {
