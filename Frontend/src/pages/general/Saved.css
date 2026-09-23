@@ -224,7 +224,7 @@
 .saved-nav-link,
 .feed-nav-link {
   display: grid;
-  min-width: 90px;
+  min-width: 72px;
   justify-items: center;
   gap: 3px;
   color: rgb(255 255 255 / 66%);

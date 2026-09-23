@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { Bookmark, Home as HomeIcon, Heart, MessageCircle, Send } from 'lucide-react'
+import { Bookmark, Home as HomeIcon, Heart, MessageCircle, Send, UserRound } from 'lucide-react'
 import './Home.css'
 import axios from 'axios'
 
@@ -237,6 +237,10 @@ const Home = () => {
         <Link className="feed-nav-link is-active" to="/">
           <HomeIcon />
           <span>Home</span>
+        </Link>
+        <Link className="feed-nav-link" to="/profile">
+          <UserRound />
+          <span>Profile</span>
         </Link>
         <Link className="feed-nav-link" to="/saved" onClick={openSaved}>
           <Bookmark />

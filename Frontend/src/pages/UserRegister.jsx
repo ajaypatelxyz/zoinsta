@@ -14,7 +14,7 @@ const UserRegister = () => {
         const email = e.target.email.value;
         const password = e.target.password.value;
 
-        await axios.post("http://localhost:3000/api/auth/user/register", {
+        const response = await axios.post("http://localhost:3000/api/auth/user/register", {
             fullName,
             email,
             password,
@@ -22,6 +22,7 @@ const UserRegister = () => {
             withCredentials: true
         })
 
+        localStorage.setItem('zoinsta-user-id', response.data.user.id)
         navigate("/");
 
     }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Bookmark, Home as HomeIcon, Trash2 } from 'lucide-react'
+import { Bookmark, Home as HomeIcon, Trash2, UserRound } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import './Saved.css'
 import axios from 'axios'
@@ -94,6 +94,10 @@ const Saved = () => {
         <Link className="saved-nav-link" to="/">
           <HomeIcon />
           <span>Home</span>
+        </Link>
+        <Link className="saved-nav-link" to="/profile">
+          <UserRound />
+          <span>Profile</span>
         </Link>
         <Link className="saved-nav-link is-active" to="/saved">
           <Bookmark />

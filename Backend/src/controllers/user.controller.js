@@ -204,11 +204,31 @@ const logoutFoodPartner = async(req, res) => {
 
 }
 
+const getUserById = async(req, res) => {
+
+    const userId = req.params.id;
+
+    const user = await userModel.findById(userId).select('-password');
+
+    if(!user){
+        return res.status(404).json({
+            message: "User not found"
+        })
+    }
+
+    res.status(200).json({
+        message: "User retrive successfully",
+        user
+    })
+
+}
+
 module.exports = {
     registerUser,
     loginUser,
     logoutUser,
     registerFoodPartner,
     loginFoodPartner,
-    logoutFoodPartner
+    logoutFoodPartner,
+    getUserById
 }

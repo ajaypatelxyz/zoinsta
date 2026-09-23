@@ -8,6 +8,7 @@ import Home from '../pages/general/Home'
 import CreateFood from '../pages/food-partner/CreateFood'
 import Profile from '../pages/food-partner/Profile'
 import Saved from '../pages/general/Saved'
+import UserProfile from '../pages/general/UserProfile'
 
 const AppRoutes = () => {
   return (
@@ -22,6 +23,7 @@ const AppRoutes = () => {
             <Route path='/create-food' element={<CreateFood/>}/>
             <Route path='/food-partner/:id' element={<Profile/>}/>
             <Route path='/saved' element={<Saved/>}/>
+            <Route path='/profile' element={<UserProfile/>}/>
         </Routes>
       </Router>
     </div>
