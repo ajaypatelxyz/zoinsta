@@ -1,0 +1,234 @@
+.welcome-page {
+  min-height: 100svh;
+  padding: 18px 18px 22px;
+  background: var(--color-page);
+  color: var(--color-ink);
+}
+
+.welcome-header,
+.welcome-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.welcome-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--color-ink);
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+  text-decoration: none;
+}
+
+.welcome-brand-mark {
+  display: block;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 auto;
+  object-fit: fill;
+}
+
+.welcome-explore {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--color-ink);
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.welcome-explore svg,
+.welcome-primary-action svg {
+  width: 17px;
+  height: 17px;
+}
+
+.welcome-content {
+  width: min(100%, 1120px);
+  margin: 0 auto;
+  padding: 76px 0 66px;
+}
+
+.welcome-intro {
+  max-width: 690px;
+}
+
+.welcome-eyebrow,
+.welcome-option-label {
+  color: var(--color-accent-strong);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+}
+
+.welcome-intro h1 {
+  max-width: 690px;
+  margin-top: 15px;
+  font-size: clamp(52px, 13vw, 104px);
+  line-height: 0.9;
+}
+
+.welcome-intro p {
+  max-width: 420px;
+  margin: 22px 0 0;
+  color: var(--color-muted);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.welcome-options {
+  display: grid;
+  gap: 14px;
+  margin-top: 54px;
+}
+
+.welcome-option {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 18px;
+  min-height: 272px;
+  padding: 22px;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+}
+
+.welcome-option-user {
+  background: var(--color-ink);
+  color: #fff;
+}
+
+.welcome-option-partner {
+  background: var(--color-panel);
+}
+
+.welcome-option-icon {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border-radius: 13px;
+  background: var(--color-accent);
+  color: #fff;
+}
+
+.welcome-option-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.welcome-option h2 {
+  margin: 12px 0 0;
+  font-family: var(--font-display);
+  font-size: 35px;
+  font-weight: 400;
+  letter-spacing: -1.1px;
+  line-height: 0.95;
+}
+
+.welcome-option p {
+  max-width: 330px;
+  margin: 12px 0 0;
+  color: var(--color-muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.welcome-option-user p {
+  color: rgb(255 255 255 / 66%);
+}
+
+.welcome-option-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  align-self: end;
+}
+
+.welcome-primary-action,
+.welcome-secondary-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.welcome-primary-action {
+  justify-content: space-between;
+  min-width: 142px;
+  padding: 13px 14px 13px 16px;
+  border-radius: var(--radius-sm);
+  background: var(--color-accent);
+  box-shadow: var(--shadow-button);
+  color: #fff;
+}
+
+.welcome-primary-action:hover {
+  background: var(--color-accent-strong);
+}
+
+.welcome-secondary-action {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.welcome-footer {
+  width: min(100%, 1120px);
+  margin: 0 auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-line);
+  color: var(--color-muted);
+  font-size: 10px;
+}
+
+@media (min-width: 721px) {
+  .welcome-page {
+    padding: 28px clamp(28px, 5vw, 76px) 24px;
+  }
+
+  .welcome-content {
+    padding: clamp(92px, 12vh, 144px) 0 78px;
+  }
+
+  .welcome-options {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 68px;
+  }
+
+  .welcome-option {
+    padding: 28px;
+  }
+}
+
+@media (max-width: 460px) {
+  .welcome-explore {
+    font-size: 0;
+  }
+
+  .welcome-explore svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .welcome-option {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    min-height: 0;
+  }
+
+  .welcome-option-actions {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 15px;
+  }
+}

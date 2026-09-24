@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { showToast } from '../components/Toast'
 
 const UserRegister = () => {
 
@@ -23,7 +24,8 @@ const UserRegister = () => {
         })
 
         localStorage.setItem('zoinsta-user-id', response.data.user.id)
-        navigate("/");
+        showToast(`Registration successful, welcome ${response.data.user.fullName}!`)
+        navigate("/home");
 
     }
 
@@ -31,7 +33,7 @@ const UserRegister = () => {
     <main className="auth-shell">
       <section className="auth-intro" aria-label="Zoinsta introduction">
         <Link className="brand" to="/user/login">
-          <span className="brand-mark">z</span>
+          <img className="brand-mark" src="/zoinsta-auth-logo.svg" alt="" />
           <span>Zoinsta</span>
         </Link>
         <div className="intro-copy">
@@ -42,6 +44,7 @@ const UserRegister = () => {
 
       <section className="auth-panel">
         <div className="auth-card">
+          <Link className="auth-back-link" to="/">&lt;- Back to welcome</Link>
           <span className="eyebrow">Join Zoinsta</span>
           <h1>Create your account</h1>
           <p className="auth-description">Save your favorite food spots and share what you discover.</p>

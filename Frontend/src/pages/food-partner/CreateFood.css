@@ -1,5 +1,3 @@
-@import '../../theme.css';
-
 .create-food-page {
   min-height: 100svh;
   background: var(--color-page);
@@ -12,7 +10,8 @@
   justify-content: space-between;
   width: min(100% - 32px, 760px);
   margin: 0 auto;
-  padding: 20px 0;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--color-line);
 }
 
 .create-food-brand {
@@ -20,105 +19,101 @@
   align-items: center;
   gap: 9px;
   color: var(--color-ink);
-  font-size: 17px;
-  font-weight: 700;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.6px;
   text-decoration: none;
 }
 
 .create-food-mark {
-  display: grid;
-  width: 28px;
-  height: 28px;
-  place-items: center;
-  border-radius: 50%;
-  background: var(--color-mark);
-  color: var(--color-page);
-  font-family: var(--font-display);
-  font-size: 20px;
-  line-height: 1;
+  display: block;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 auto;
+  object-fit: fill;
 }
 
 .create-food-back {
-  color: var(--color-muted);
-  font-size: 12px;
-  font-weight: 700;
+  color: var(--color-accent-strong);
+  font-size: 11px;
+  font-weight: 800;
   text-decoration: none;
-  text-underline-offset: 4px;
 }
 
 .create-food-content {
   width: min(100% - 32px, 560px);
   margin: 0 auto;
-  padding: 38px 0 56px;
+  padding: 42px 0 60px;
 }
 
 .create-food-eyebrow {
   display: block;
-  margin-bottom: 14px;
+  margin-bottom: 13px;
   color: var(--color-accent-strong);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 1.4px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.3px;
   text-transform: uppercase;
 }
 
 .create-food-title {
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(38px, 11vw, 58px);
+  font-size: clamp(42px, 12vw, 64px);
   font-weight: 400;
   letter-spacing: -2px;
-  line-height: 0.98;
+  line-height: 0.92;
 }
 
 .create-food-description {
   max-width: 420px;
-  margin: 18px 0 32px;
+  margin: 16px 0 30px;
   color: var(--color-muted);
   font-size: 14px;
-  line-height: 1.6;
+  line-height: 1.55;
 }
 
 .create-food-form {
   display: grid;
-  gap: 22px;
-  padding-top: 25px;
+  gap: 19px;
+  padding-top: 24px;
   border-top: 1px solid var(--color-line);
 }
 
-.create-food-field {
+.create-food-field,
+.create-food-upload {
   display: grid;
-  gap: 8px;
+  gap: 7px;
 }
 
 .create-food-field label,
 .create-food-upload-label {
   color: var(--color-muted);
-  font-size: 12px;
-  font-weight: 700;
+  font-size: 11px;
+  font-weight: 800;
 }
 
 .create-food-input,
 .create-food-textarea {
   width: 100%;
   border: 1px solid var(--color-line);
-  border-radius: 2px;
+  border-radius: var(--radius-sm);
   outline: none;
-  background: var(--color-panel);
+  background: #fff;
   color: var(--color-ink);
   font-size: 14px;
   transition: border-color 160ms ease, box-shadow 160ms ease;
 }
 
 .create-food-input {
-  min-height: 48px;
-  padding: 12px 14px;
+  min-height: 52px;
+  padding: 13px 15px;
 }
 
 .create-food-textarea {
   min-height: 132px;
   resize: vertical;
-  padding: 14px;
+  padding: 14px 15px;
   line-height: 1.5;
 }
 
@@ -131,13 +126,7 @@
 .create-food-input:focus,
 .create-food-textarea:focus {
   border-color: var(--color-accent);
-  box-shadow: 0 0 0 3px rgb(227 94 61 / 15%);
-}
-
-.create-food-upload {
-  position: relative;
-  display: grid;
-  gap: 8px;
+  box-shadow: 0 0 0 4px rgb(244 81 44 / 12%);
 }
 
 .create-food-file {
@@ -146,69 +135,62 @@
   height: 1px;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
 }
 
 .create-food-upload-box {
   display: grid;
-  min-height: 180px;
+  min-height: 190px;
   place-items: center;
   padding: 24px;
-  border: 1px dashed var(--color-line);
-  border-radius: 2px;
-  background: color-mix(in srgb, var(--color-accent) 5%, var(--color-panel));
+  border: 1.5px dashed #e1c7bc;
+  border-radius: var(--radius-md);
+  background: #fff4ee;
   color: var(--color-muted);
   cursor: pointer;
   text-align: center;
-  transition: border-color 160ms ease, background 160ms ease;
 }
 
 .create-food-upload-box:hover,
 .create-food-file:focus-visible + .create-food-upload-box {
   border-color: var(--color-accent);
-  background: color-mix(in srgb, var(--color-accent) 10%, var(--color-panel));
+  background: #ffebe3;
 }
 
 .create-food-preview-box {
   overflow: hidden;
   border: 1px solid var(--color-line);
-  border-radius: 2px;
-  background: var(--color-panel);
+  border-radius: var(--radius-md);
+  background: var(--color-ink);
 }
 
 .create-food-preview {
   display: block;
   width: 100%;
   max-height: 300px;
-  background: #111;
   object-fit: contain;
 }
 
 .create-food-change-video {
   display: block;
-  padding: 12px 14px;
-  border-top: 1px solid var(--color-line);
-  color: var(--color-accent-strong);
+  padding: 13px 14px;
+  border-top: 1px solid rgb(255 255 255 / 12%);
+  color: #fff;
   cursor: pointer;
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 800;
   text-align: center;
-}
-
-.create-food-change-video:hover {
-  background: color-mix(in srgb, var(--color-accent) 8%, var(--color-panel));
 }
 
 .create-food-upload-icon {
   display: grid;
-  width: 38px;
-  height: 38px;
+  width: 42px;
+  height: 42px;
   margin: 0 auto 12px;
   place-items: center;
-  border-radius: 50%;
+  border-radius: 13px;
   background: var(--color-accent);
   color: #fff;
-  font-size: 22px;
+  font-size: 25px;
   font-weight: 300;
 }
 
@@ -218,14 +200,9 @@
 }
 
 .create-food-upload-title {
-  display: block;
-  max-width: 100%;
-  overflow: hidden;
   color: var(--color-ink);
   font-size: 14px;
-  font-weight: 700;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  font-weight: 800;
 }
 
 .create-food-upload-note {
@@ -236,38 +213,31 @@
 .create-food-submit {
   display: flex;
   width: 100%;
-  min-height: 50px;
+  min-height: 54px;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 16px 12px 20px;
+  padding: 13px 16px 13px 20px;
   border: 0;
-  border-radius: 2px;
-  background: var(--color-ink);
-  color: var(--color-page);
+  border-radius: var(--radius-sm);
+  background: var(--color-accent);
+  box-shadow: var(--shadow-button);
+  color: #fff;
   cursor: pointer;
-  font-size: 14px;
-  font-weight: 700;
-  transition: background 160ms ease, transform 160ms ease;
+  font-size: 13px;
+  font-weight: 800;
 }
 
 .create-food-submit span {
-  color: var(--color-accent);
   font-size: 20px;
-  font-weight: 400;
 }
 
 .create-food-submit:hover {
-  background: var(--color-accent);
-  color: #fff;
+  background: var(--color-accent-strong);
 }
 
 .create-food-submit:disabled {
   cursor: wait;
   opacity: 0.65;
-}
-
-.create-food-submit:active {
-  transform: translateY(1px);
 }
 
 .create-food-error {

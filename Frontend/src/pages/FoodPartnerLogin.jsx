@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { showToast } from '../components/Toast'
 
 const FoodPartnerLogin = () => {
 
@@ -14,14 +15,20 @@ const FoodPartnerLogin = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
 
-    await axios.post("http://localhost:3000/api/auth/food-partner/login", {
-      email,
-      password
-    }, {
-      withCredentials: true
-    })
+    try {
+      const response = await axios.post("http://localhost:3000/api/auth/food-partner/login", {
+        email,
+        password
+      }, {
+        withCredentials: true
+      })
 
-    navigate("/create-food");
+      localStorage.setItem('zoinsta-food-partner-id', response.data.foodPartner.id)
+      showToast(`Welcome to Zoinsta, ${response.data.foodPartner.name}!`)
+      navigate("/food-partner/profile");
+    } catch (error) {
+      showToast(error.response?.data?.message || 'Wrong email or password.')
+    }
 
   }
 
@@ -29,7 +36,7 @@ const FoodPartnerLogin = () => {
     <main className="auth-shell">
       <section className="auth-intro" aria-label="Zoinsta introduction">
         <Link className="brand" to="/food-partner/login">
-          <span className="brand-mark">z</span>
+          <img className="brand-mark" src="/zoinsta-auth-logo.svg" alt="" />
           <span>Zoinsta</span>
         </Link>
         <div className="intro-copy">
@@ -40,6 +47,7 @@ const FoodPartnerLogin = () => {
 
       <section className="auth-panel">
         <div className="auth-card">
+          <Link className="auth-back-link" to="/">&lt;- Back to welcome</Link>
           <span className="eyebrow">Food partner portal</span>
           <h1>Welcome back</h1>
           <p className="auth-description">Keep your menu, profile, and community presence up to date.</p>

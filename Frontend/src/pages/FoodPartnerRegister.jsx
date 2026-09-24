@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { showToast } from '../components/Toast'
 
 const FoodPartnerRegister = () => {
 
@@ -28,7 +29,9 @@ const FoodPartnerRegister = () => {
     }, {
       withCredentials: true
     }).then(response => {
-      navigate("/create-food")
+      localStorage.setItem('zoinsta-food-partner-id', response.data.foodPartner.id)
+      showToast(`Registration successful, welcome ${response.data.foodPartner.name}!`)
+      navigate("/food-partner/profile")
     }).catch(error => {
       console.log(error)
     })
@@ -39,7 +42,7 @@ const FoodPartnerRegister = () => {
     <main className="auth-shell">
       <section className="auth-intro" aria-label="Zoinsta introduction">
         <Link className="brand" to="/food-partner/login">
-          <span className="brand-mark">z</span>
+          <img className="brand-mark" src="/zoinsta-auth-logo.svg" alt="" />
           <span>Zoinsta</span>
         </Link>
         <div className="intro-copy">
@@ -50,6 +53,7 @@ const FoodPartnerRegister = () => {
 
       <section className="auth-panel">
         <div className="auth-card">
+          <Link className="auth-back-link" to="/">&lt;- Back to welcome</Link>
           <span className="eyebrow">For food partners</span>
           <h1>Bring your place to life</h1>
           <p className="auth-description">Connect with hungry locals and grow your food business on Zoinsta.</p>

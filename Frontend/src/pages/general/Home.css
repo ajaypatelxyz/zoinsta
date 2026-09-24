@@ -2,7 +2,7 @@
   position: relative;
   height: 100svh;
   overflow: hidden;
-  background: #111;
+  background: #171717;
   color: #fff;
 }
 
@@ -15,41 +15,37 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 24px clamp(20px, 4vw, 56px);
-  background: linear-gradient(180deg, rgb(0 0 0 / 50%), transparent);
+  padding: 18px;
+  background: linear-gradient(180deg, rgb(0 0 0 / 58%), transparent);
   pointer-events: none;
 }
 
 .feed-brand {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 9px;
   color: #fff;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 22px;
-  font-weight: 700;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.7px;
   text-decoration: none;
   pointer-events: auto;
 }
 
 .feed-brand-mark {
-  display: grid;
-  width: 30px;
-  height: 30px;
-  place-items: center;
-  border-radius: 50%;
-  background: #fff;
-  color: #e35e3d;
-  font-size: 22px;
-  line-height: 1;
+  display: block;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 auto;
+  object-fit: fill;
 }
 
 .feed-header-label {
   margin: 0;
-  color: rgb(255 255 255 / 72%);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 1.5px;
+  color: rgb(255 255 255 / 78%);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
   text-transform: uppercase;
 }
 
@@ -93,122 +89,122 @@
 
 .feed-shade {
   z-index: -1;
-  background: linear-gradient(180deg, rgb(0 0 0 / 7%) 15%, transparent 42%, rgb(0 0 0 / 76%) 100%);
+  background: linear-gradient(180deg, rgb(0 0 0 / 8%) 18%, transparent 40%, rgb(0 0 0 / 82%) 100%);
 }
 
 .feed-content {
   width: min(100%, 720px);
-  padding: 0 clamp(20px, 6vw, 90px) clamp(105px, 13vh, 130px);
+  padding: 0 74px 108px 20px;
 }
 
 .feed-actions {
   position: absolute;
-  right: clamp(16px, 4vw, 56px);
-  bottom: clamp(110px, 15vh, 150px);
+  right: 14px;
+  bottom: 112px;
   display: grid;
-  gap: 18px;
+  gap: 21px;
 }
 
 .feed-action {
   display: grid;
-  justify-items: center;
-  gap: 3px;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+  padding: 0;
   border: 0;
   background: transparent;
   color: #fff;
   cursor: pointer;
   filter: drop-shadow(0 2px 8px rgb(0 0 0 / 35%));
+  transition: color 160ms ease, transform 160ms ease;
 }
 
 .feed-action svg {
-  width: 25px;
-  height: 25px;
+  width: 29px;
+  height: 29px;
 }
 
 .feed-action span {
-  font-size: 10px;
-  font-weight: 700;
+  display: none;
 }
 
 .feed-action.is-active {
-  color: #ffad91;
+  color: #ff4f91;
+}
+
+.feed-action:nth-child(2).is-active {
+  color: #fff;
+}
+
+.feed-action:hover {
+  transform: scale(1.08);
 }
 
 .feed-store-type {
   display: block;
-  margin-bottom: 11px;
+  margin-bottom: 10px;
   color: #ffad91;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 1.5px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.3px;
   text-transform: uppercase;
 }
 
 .feed-description {
   display: -webkit-box;
   max-width: 580px;
-  margin: 0 0 20px;
+  margin: 0 0 18px;
   overflow: hidden;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(24px, 3vw, 42px);
+  font-family: var(--font-display);
+  font-size: clamp(29px, 8vw, 44px);
   letter-spacing: -1px;
-  line-height: 1.05;
+  line-height: 0.98;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 }
 
 .visit-store-button {
   display: inline-flex;
-  min-width: 142px;
+  min-width: 145px;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
-  padding: 13px 15px 13px 18px;
+  gap: 22px;
+  padding: 13px 14px 13px 17px;
   border: 0;
-  border-radius: 2px;
+  border-radius: var(--radius-sm);
   background: #fff;
-  color: #1d201c;
+  color: var(--color-ink);
   cursor: pointer;
-  font-size: 13px;
-  font-weight: 700;
+  font-size: 12px;
+  font-weight: 800;
   transition: background 160ms ease, transform 160ms ease;
 }
 
 .visit-store-button span {
-  color: #e35e3d;
+  color: var(--color-accent);
   font-size: 19px;
-  font-weight: 400;
 }
 
 .visit-store-button:hover {
-  background: #ffad91;
+  background: #ffe4da;
 }
 
 .visit-store-button:active {
   transform: translateY(1px);
 }
 
-@media (max-width: 600px) {
+@media (min-width: 720px) {
   .feed-header {
-    padding: 18px 18px;
-  }
-
-  .feed-header-label {
-    font-size: 10px;
+    padding: 24px clamp(20px, 4vw, 56px);
   }
 
   .feed-content {
-    padding-right: 34px;
-    padding-bottom: 105px;
+    padding-left: clamp(20px, 6vw, 90px);
+    padding-bottom: clamp(105px, 13vh, 130px);
   }
 
   .feed-actions {
-    right: 13px;
-    bottom: 112px;
+    right: clamp(16px, 4vw, 56px);
+    bottom: clamp(110px, 15vh, 150px);
   }
-
-  .feed-description {
-    font-size: 30px;
-  }
-
 }

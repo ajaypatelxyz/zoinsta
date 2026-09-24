@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { showToast } from '../components/Toast'
 
 const UserLogin = () => {
   
@@ -13,15 +14,20 @@ const UserLogin = () => {
     const email = e.target.email.value;
     const password =e.target.password.value;
 
-    const response = await axios.post("http://localhost:3000/api/auth/user/login", {
-      email,
-      password
-    }, {
-      withCredentials: true
-    })
+    try {
+      const response = await axios.post("http://localhost:3000/api/auth/user/login", {
+        email,
+        password
+      }, {
+        withCredentials: true
+      })
 
-    localStorage.setItem('zoinsta-user-id', response.data.user.id)
-    navigate("/");
+      localStorage.setItem('zoinsta-user-id', response.data.user.id)
+      showToast(`Welcome to Zoinsta, ${response.data.user.fullName}!`)
+      navigate("/home");
+    } catch (error) {
+      showToast(error.response?.data?.message || 'Wrong email or password.')
+    }
 
   }
 
@@ -29,7 +35,7 @@ const UserLogin = () => {
     <main className="auth-shell">
       <section className="auth-intro" aria-label="Zoinsta introduction">
         <Link className="brand" to="/user/login">
-          <span className="brand-mark">z</span>
+          <img className="brand-mark" src="/zoinsta-auth-logo.svg" alt="" />
           <span>Zoinsta</span>
         </Link>
         <div className="intro-copy">
@@ -40,6 +46,7 @@ const UserLogin = () => {
 
       <section className="auth-panel">
         <div className="auth-card">
+          <Link className="auth-back-link" to="/">&lt;- Back to welcome</Link>
           <span className="eyebrow">Welcome back</span>
           <h1>Log in to Zoinsta</h1>
           <p className="auth-description">Pick up where you left off and find your next favorite place.</p>

@@ -4,10 +4,17 @@
   box-sizing: border-box;
 }
 
+html {
+  background: var(--color-page);
+}
+
 body {
   margin: 0;
   background: var(--color-page);
   color: var(--color-ink);
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 button,
@@ -26,80 +33,106 @@ a {
 
 .auth-shell {
   display: grid;
-  grid-template-columns: minmax(260px, 0.78fr) minmax(480px, 1.22fr);
+  grid-template-columns: 1fr;
   min-height: 100vh;
+  background: var(--color-panel);
 }
 
 .auth-intro {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 42px clamp(28px, 6vw, 92px) 54px;
+  min-height: 260px;
+  padding: 26px 22px 30px;
   background: var(--color-accent);
-  color: #fffaf5;
+  color: #fff;
+  background-image: radial-gradient(circle at 90% 15%, rgb(255 255 255 / 22%) 0 3px, transparent 4px), radial-gradient(circle at 12% 85%, rgb(255 255 255 / 15%) 0 80px, transparent 81px);
 }
 
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 11px;
+  gap: 10px;
   width: fit-content;
-  font-size: 21px;
+  font-size: 20px;
   font-weight: 700;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.7px;
   text-decoration: none;
 }
 
 .brand-mark {
   display: grid;
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   place-items: center;
   border-radius: 50%;
-  background: #fffaf5;
+  background: #fff;
   color: var(--color-accent);
   font-family: var(--font-display);
-  font-size: 23px;
+  font-size: 24px;
   line-height: 1;
 }
 
 .intro-copy {
-  max-width: 250px;
+  max-width: 290px;
 }
 
 .intro-line {
   display: block;
-  width: 42px;
-  height: 3px;
-  margin-bottom: 22px;
+  width: 34px;
+  height: 4px;
+  margin-bottom: 16px;
+  border-radius: 4px;
   background: currentColor;
 }
 
 .intro-copy p {
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(30px, 3.2vw, 48px);
-  letter-spacing: -1.5px;
-  line-height: 1.02;
+  font-size: 34px;
+  letter-spacing: -1px;
+  line-height: 1;
 }
 
 .auth-panel {
   display: grid;
   place-items: center;
-  padding: 48px clamp(28px, 7vw, 110px);
+  padding: 44px 22px 56px;
 }
 
 .auth-card {
   width: min(100%, 520px);
 }
 
-.eyebrow {
-  display: block;
-  margin-bottom: 18px;
-  color: var(--color-accent-strong);
+.auth-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 30px;
+  padding: 9px 13px;
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  background: var(--color-panel);
+  color: var(--color-muted);
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 1.4px;
+  text-decoration: none;
+  transition: border-color 160ms ease, color 160ms ease, transform 160ms ease;
+}
+
+.auth-back-link:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent-strong);
+  transform: translateX(-2px);
+}
+
+.eyebrow {
+  display: block;
+  margin-bottom: 14px;
+  color: var(--color-accent-strong);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
   text-transform: uppercase;
 }
 
@@ -107,55 +140,55 @@ h1 {
   max-width: 480px;
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(36px, 4vw, 56px);
+  font-size: clamp(40px, 11vw, 58px);
   font-weight: 400;
-  letter-spacing: -2px;
-  line-height: 0.98;
+  letter-spacing: -1.8px;
+  line-height: 0.94;
 }
 
 .auth-description {
   max-width: 400px;
-  margin: 18px 0 36px;
+  margin: 18px 0 30px;
   color: var(--color-muted);
-  font-size: 15px;
-  line-height: 1.6;
+  font-size: 14px;
+  line-height: 1.55;
 }
 
 .auth-form {
-  padding: 25px 0 24px;
+  padding: 24px 0 22px;
   border-top: 1px solid var(--color-line);
   border-bottom: 1px solid var(--color-line);
 }
 
 .field-grid {
   display: grid;
-  gap: 20px;
+  gap: 16px;
 }
 
 .field-grid-compact {
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px 16px;
+  gap: 16px;
 }
 
 .field {
   display: grid;
-  gap: 8px;
+  gap: 7px;
 }
 
 .field span {
   color: var(--color-muted);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
 }
 
 .field input {
   width: 100%;
-  min-height: 48px;
-  padding: 12px 14px;
+  min-height: 52px;
+  padding: 13px 15px;
   border: 1px solid var(--color-line);
-  border-radius: 2px;
+  border-radius: var(--radius-sm);
   outline: none;
-  background: var(--color-panel);
+  background: #fffdfb;
   color: var(--color-ink);
   font-size: 14px;
   transition: border-color 160ms ease, box-shadow 160ms ease;
@@ -168,25 +201,26 @@ h1 {
 
 .field input:focus {
   border-color: var(--color-accent);
-  box-shadow: 0 0 0 3px rgb(227 94 61 / 15%);
+  box-shadow: 0 0 0 4px rgb(244 81 44 / 12%);
 }
 
 .submit-button {
   display: flex;
   width: 100%;
-  min-height: 50px;
+  min-height: 54px;
   align-items: center;
   justify-content: space-between;
-  margin-top: 25px;
-  padding: 12px 16px 12px 20px;
+  margin-top: 24px;
+  padding: 13px 16px 13px 20px;
   border: 0;
-  border-radius: 2px;
-  background: var(--color-ink);
-  color: var(--color-page);
+  border-radius: var(--radius-sm);
+  background: var(--color-accent);
+  box-shadow: var(--shadow-button);
+  color: #fff;
   cursor: pointer;
   font-size: 14px;
   font-weight: 700;
-  transition: background 160ms ease, transform 160ms ease;
+  transition: background 160ms ease, transform 160ms ease, box-shadow 160ms ease;
 }
 
 .submit-button span {
@@ -195,7 +229,8 @@ h1 {
 }
 
 .submit-button:hover {
-  background: var(--color-accent);
+  background: var(--color-accent-strong);
+  box-shadow: 0 10px 22px rgb(244 81 44 / 28%);
 }
 
 .submit-button:active {
@@ -219,39 +254,36 @@ h1 {
 }
 
 @media (max-width: 720px) {
+  .auth-panel {
+    min-height: calc(100vh - 260px);
+  }
+
+  .auth-back-link {
+    margin-bottom: 24px;
+  }
+}
+
+@media (min-width: 721px) {
   .auth-shell {
-    display: block;
+    grid-template-columns: minmax(300px, 0.72fr) minmax(480px, 1.28fr);
   }
 
   .auth-intro {
-    min-height: 190px;
-    padding: 26px 24px 28px;
-  }
-
-  .intro-copy {
-    max-width: 220px;
+    min-height: 100vh;
+    padding: 42px clamp(28px, 6vw, 92px) 54px;
   }
 
   .intro-copy p {
-    font-size: 30px;
-  }
-
-  .intro-line {
-    margin-bottom: 13px;
+    font-size: clamp(36px, 4vw, 58px);
   }
 
   .auth-panel {
-    min-height: calc(100vh - 190px);
-    padding: 48px 24px;
+    padding: 64px clamp(28px, 7vw, 110px);
   }
 }
 
 @media (max-width: 460px) {
   .field-grid-compact {
     grid-template-columns: 1fr;
-  }
-
-  h1 {
-    font-size: 42px;
   }
 }

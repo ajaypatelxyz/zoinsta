@@ -2,18 +2,30 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import './Profile.css'
 import axios from 'axios'
-import { useParams } from 'react-router-dom'
+import { LogOut, Plus } from 'lucide-react'
+import { useNavigate, useParams } from 'react-router-dom'
+import { showToast } from '../../components/Toast'
 
 const Profile = () => {
   const { id } = useParams()
+  const navigate = useNavigate()
+  const isDashboard = !id
 
   const [profile, setProfile] = useState(null)
   const [video, setVideo] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState('')
+  const [isLoggingOut, setIsLoggingOut] = useState(false)
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/api/food-partner/${id}`, {
+    const partnerId = id || localStorage.getItem('zoinsta-food-partner-id')
+
+    if (!partnerId) {
+      navigate('/food-partner/login')
+      return
+    }
+
+    axios.get(`http://localhost:3000/api/food-partner/${partnerId}`, {
       withCredentials: true
     }).then(response => {
       setProfile(response.data.foodPartner)
@@ -24,7 +36,24 @@ const Profile = () => {
     }).finally(() => {
       setIsLoading(false)
     })
-  }, [id])
+  }, [id, navigate])
+
+  const handleLogout = async () => {
+    setIsLoggingOut(true)
+
+    try {
+      await axios.get('http://localhost:3000/api/auth/food-partner/logout', {
+        withCredentials: true
+      })
+      localStorage.removeItem('zoinsta-food-partner-id')
+      showToast('See you soon, logout!')
+      navigate('/food-partner/login')
+    } catch (requestError) {
+      console.log(requestError)
+      setIsLoggingOut(false)
+      setError('Unable to log out. Please try again.')
+    }
+  }
 
   if (isLoading) {
     return <main className="partner-status">Loading profile...</main>
@@ -37,11 +66,16 @@ const Profile = () => {
   return (
     <main className="partner-page">
       <header className="partner-header">
-        <Link className="partner-brand" to="/">
-          <span className="partner-brand-mark">z</span>
+        <Link className="partner-brand" to="/home">
+          <img className="partner-brand-mark" src="/zoinsta-logo.svg" alt="" />
           <span>Zoinsta</span>
         </Link>
-        <Link className="partner-back-link" to="/">Back to feed</Link>
+        {isDashboard && (
+          <button className="partner-logout-button" type="button" onClick={handleLogout} disabled={isLoggingOut}>
+            <LogOut />
+            {isLoggingOut ? 'Logging out...' : 'Log out'}
+          </button>
+        )}
       </header>
 
       <section className="partner-content">
@@ -56,14 +90,21 @@ const Profile = () => {
           <div className="partner-stats">
             <div>
               <strong>{video.length}</strong>
-              <span>Total meals</span>
+              <span>Uploaded videos</span>
             </div>
             <div>
-              <strong>0</strong>
-              <span>Customer served</span>
+              <strong>{profile.email ? 'Active' : '-'}</strong>
+              <span>Partner status</span>
             </div>
           </div>
         </section>
+
+        {isDashboard && (
+          <Link className="partner-upload-button" to="/create-food">
+            <Plus />
+            Upload food
+          </Link>
+        )}
 
         <section className="partner-meals" aria-label={`${profile.name} meals`}>
           {video.length > 0 ? video.map((item) => (

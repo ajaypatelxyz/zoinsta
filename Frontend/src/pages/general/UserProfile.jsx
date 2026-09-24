@@ -3,6 +3,7 @@ import { Home as HomeIcon, UserRound, Bookmark, LogOut } from 'lucide-react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import './UserProfile.css'
+import { showToast } from '../../components/Toast'
 
 const UserProfile = () => {
   const [user, setUser] = useState(null)
@@ -19,6 +20,7 @@ const UserProfile = () => {
         withCredentials: true
       })
       localStorage.removeItem('zoinsta-user-id')
+      showToast('See you soon, logout!')
       navigate('/user/login')
     } catch (requestError) {
       setError(requestError.response?.data?.message || 'Unable to log out. Please try again.')
@@ -59,8 +61,8 @@ const UserProfile = () => {
   return (
     <main className="profile-page">
       <header className="profile-header">
-        <Link className="profile-brand" to="/">
-          <span className="profile-brand-mark">z</span>
+        <Link className="profile-brand" to="/home">
+          <img className="profile-brand-mark" src="/zoinsta-logo.svg" alt="" />
           <span>Zoinsta</span>
         </Link>
         <span className="profile-header-label">Your profile</span>
@@ -81,7 +83,7 @@ const UserProfile = () => {
       </section>
 
       <nav className="profile-navigation" aria-label="Main navigation">
-        <Link className="profile-nav-link" to="/">
+        <Link className="profile-nav-link" to="/home">
           <HomeIcon />
           <span>Home</span>
         </Link>

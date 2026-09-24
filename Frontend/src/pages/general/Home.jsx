@@ -190,8 +190,8 @@ const Home = () => {
   return (
     <main className="feed-page">
       <header className="feed-header">
-        <Link className="feed-brand" to="/">
-          <span className="feed-brand-mark">z</span>
+        <Link className="feed-brand" to="/home">
+          <img className="feed-brand-mark" src="/zoinsta-logo.svg" alt="" />
           <span>Zoinsta</span>
         </Link>
         <p className="feed-header-label">Discover nearby</p>
@@ -234,7 +234,7 @@ const Home = () => {
       </div>
 
       <nav className="feed-navigation" aria-label="Main navigation">
-        <Link className="feed-nav-link is-active" to="/">
+        <Link className="feed-nav-link is-active" to="/home">
           <HomeIcon />
           <span>Home</span>
         </Link>

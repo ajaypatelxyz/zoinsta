@@ -51,8 +51,8 @@ const Saved = () => {
   return (
     <main className="saved-page">
       <header className="saved-header">
-        <Link className="saved-brand" to="/">
-          <span className="saved-brand-mark">z</span>
+        <Link className="saved-brand" to="/home">
+          <img className="saved-brand-mark" src="/zoinsta-logo.svg" alt="" />
           <span>Zoinsta</span>
         </Link>
         <span className="saved-count">{savedVideos.length} saved</span>
@@ -85,13 +85,13 @@ const Saved = () => {
             <Bookmark />
             <strong>No saved food yet</strong>
             <p>Tap the bookmark on a reel to keep it here.</p>
-            <Link to="/">Explore reels</Link>
+            <Link to="/home">Explore reels</Link>
           </div>
         )}
       </section>
 
       <nav className="saved-navigation" aria-label="Main navigation">
-        <Link className="saved-nav-link" to="/">
+        <Link className="saved-nav-link" to="/home">
           <HomeIcon />
           <span>Home</span>
         </Link>

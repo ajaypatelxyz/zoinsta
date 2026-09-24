@@ -54,7 +54,7 @@ const CreateFood = () => {
         withCredentials: true
       })
 
-      navigate("/");
+      navigate("/food-partner/profile");
     } catch (error) {
       console.log(error)
       setError('Unable to publish this food.')
@@ -67,11 +67,11 @@ const CreateFood = () => {
   return (
     <main className="create-food-page">
       <header className="create-food-header">
-        <Link className="create-food-brand" to="/">
-          <span className="create-food-mark">z</span>
+        <Link className="create-food-brand" to="/home">
+          <img className="create-food-mark" src="/zoinsta-logo.svg" alt="" />
           <span>Zoinsta</span>
         </Link>
-        <Link className="create-food-back" to="/">Back to feed</Link>
+        <Link className="create-food-back" to="/food-partner/profile">Back to profile</Link>
       </header>
 
       <section className="create-food-content">
